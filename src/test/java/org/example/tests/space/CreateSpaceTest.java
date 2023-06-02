@@ -14,20 +14,18 @@ class CreateSpaceTest {
     void createSpaceTest() {
 
         JSONObject body = new JSONObject();
-        body.put("name", "Proxima Centauri");
+        body.put("name", "Orion");
 
         Response response = CreateSpaceRequest.createSpaceRequest(body);
 
         Assertions.assertThat(response.statusCode()).isEqualTo(200);
 
         JsonPath json = response.jsonPath();
-        Assertions.assertThat(json.getString("name")).isEqualTo("Proxima Centauri");
+        Assertions.assertThat(json.getString("name")).isEqualTo("Orion");
         String spaceId = json.getString("id");
 
         //DELETE SPACE
         Response deleteResponse = DeleteSpaceRequest.deleteSpaceRequest(spaceId);
         Assertions.assertThat(deleteResponse.statusCode()).isEqualTo(200);
-
     }
-
 }
