@@ -17,7 +17,6 @@ public class CreateSpaceRequest {
                 .when()
                 .post(ClickupUrl.getSpacesUrl(ClickupProperties.getTeamId()))
                 .then()
-                .log().ifError()
                 .extract()
                 .response();
     }
