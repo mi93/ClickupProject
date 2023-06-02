@@ -4,6 +4,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
 import org.example.requests.space.CreateSpaceRequest;
+import org.example.requests.space.DeleteSpaceRequest;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,11 @@ class CreateSpaceTest {
 
         JsonPath json = response.jsonPath();
         Assertions.assertThat(json.getString("name")).isEqualTo("Proxima Centauri");
+        String spaceId = json.getString("id");
+
+        //DELETE SPACE
+        Response deleteResponse = DeleteSpaceRequest.deleteSpaceRequest(spaceId);
+        Assertions.assertThat(deleteResponse.statusCode()).isEqualTo(200);
 
     }
 
