@@ -12,7 +12,8 @@ public class CreateSpaceRequest {
 
     public static Response createSpaceRequest(JSONObject body) {
         return given()
-                .spec(BaseRequest.requestSpec(body))
+                .spec(BaseRequest.requestSpec())
+                .body(body.toString())
                 .when()
                 .post(ClickupUrl.getSpacesUrl(ClickupProperties.getTeamId()))
                 .then()

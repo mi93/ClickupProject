@@ -11,13 +11,12 @@ import org.json.JSONObject;
 
 public class BaseRequest {
 
-    public static RequestSpecification requestSpec (JSONObject body) {
+    public static RequestSpecification requestSpec () {
 
         RequestSpecBuilder requestBuilder = new RequestSpecBuilder();
         requestBuilder.setBaseUri(ClickupUrl.getBaseUrl());
         requestBuilder.setContentType(ContentType.JSON);
         requestBuilder.addHeader("Authorization", ClickupProperties.getToken());
-        requestBuilder.setBody(body);
         requestBuilder.addFilter(new RequestLoggingFilter());
         requestBuilder.addFilter(new ResponseLoggingFilter());
 
