@@ -6,8 +6,12 @@ public class ClickupUrl {
     private static final String TEAM = "/team";
     private static final String SPACE = "/space";
 
+    public static String getBaseUrl() {
+        return BASE_URL;
+    }
+
     public static String getSpacesUrl(String teamId) {
-        return BASE_URL + TEAM + "/" + teamId + SPACE;
+        return TEAM + "/" + teamId + SPACE;
     }
 
 
